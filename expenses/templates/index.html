@@ -1,0 +1,119 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .btn-wallet {
+        background-color: rgb(211, 206, 206);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 22px;
+        color: black;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .btn-wallet:hover {
+        background-color: grey;
+    }
+
+    .index-div {
+        margin-left: auto;
+        margin-top: -35px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .index-div-col {
+        margin-top: -80px;
+        margin-left: auto;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .transaction {
+        width: 80%;
+        float: right;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .div-recent-expenses {
+        width: 80%;
+        margin-left: auto;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .div-info {
+        display: flex;
+        flex-direction: row;
+        gap: 20%;
+        width: 79.9%;
+        float: right;
+        margin-top: 40px;
+    }
+</style>
+
+<div class="container">
+    <h2 class="welcome-txt align_center">Welcome to your dashboard</h2>
+    <br>
+    <p class="form-label">Here you can add new expenses, see the total savings and expenses during the current month as well as the last 10 transactions.</p>
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+
+    <div class="div-info">
+        <div>
+            <p class="form-label font_size_25 color-green">Total savings:{{saving}}</p>
+        </div>
+        <div>
+            <p class="form-label font_size_25">Total spent in {{month}}:{{current_month}}</p>
+        </div>
+
+
+    </div>
+
+    <div class="transaction">
+        <button class="btn-wallet" type="button" hx-get="{% url 'expenses:add-expense' %}" hx-target="#expense-form" hx-swap="beforeend">Add an expense</button>
+        <br>
+
+    </div>
+
+    {% include 'sidebar.html' %}
+
+    <div class="index-div-col">
+        {% include 'partials/form_columns.html' %}
+    </div>
+
+    <div class="index-div" id="expense-form">
+        {% include 'partials/form.html' %}
+    </div>
+
+    <div class="my-4">
+        <br>
+        <button type="button" class="btn btn_size_80 align_right btn-color-green" id="add-all">Save</button>
+    </div>
+
+    <br><br>
+    <div class="div-recent-expenses">
+        <ul class="form-label " id="transaction-list">
+            {% for transaction in transactions %}
+            {% include 'partials/transaction.html' %}
+            {% endfor %}
+        </ul>
+    </div>
+    <br><br><br>
+</div>
+{%endblock%}

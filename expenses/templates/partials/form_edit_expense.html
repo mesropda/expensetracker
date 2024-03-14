@@ -1,0 +1,23 @@
+{% load widget_tweaks %}
+
+<form hx-post="{% url 'expenses:submit-edit-expense' pk=transaction.pk %}" hx-target="#transaction-list" hx-swap="innerHTML"
+    hx-on="htmx:afterRequest: this.remove()" hx-trigger="click from:#update">{%csrf_token%}
+    <div class="inline marg_top">
+        <div>
+            {% render_field form.transaction_type|attr:"value:transaction.transaction_type" class="form_input_select col-sm-12" %}
+        </div>
+        <div>
+            {% render_field form.amount placeholder="Sum" value=transaction.amount class="form_input col-sm-8"%}
+        </div>
+        <div>
+            {% render_field form.category value=transaction.category class="form_input_select col-sm-15"%}
+        </div>
+        <div>
+            {% render_field form.source class="form_input_select col-sm-12" %}
+        </div>
+
+        <div>
+            <button type="button" class="btn-small btn-danger" hx-on="click: this.closest('form').remove() ">Cancel</button>
+        </div>
+    </div>
+</form>

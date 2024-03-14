@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{% load widget_tweaks %}
+<style>
+    .table-div {
+
+        margin-left: auto;
+        margin-top: -39px;
+        width: 80%;
+
+    }
+
+    .search-div {
+        margin-left: auto;
+        margin-top: -207px;
+        width: 80%;
+    }
+
+    .nav-paginator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div class="container">
+    <h2 class="welcome-txt align_center">Welcome to History page</h2>
+    <br>
+    <p class="form-label">Here you can see and filter your transactions, as well as delete or edit them.</p>
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+
+
+    {% include 'sidebar.html' %}
+    {% include 'partials/filter_form.html' %}
+
+    <div class="table-div">
+
+        {% include 'partials/vew_transactions_template.html'%}
+
+
+        <nav aria-label="Page navigation example" class="nav-paginator">
+            <ul class="pagination">
+                {% if transactions.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{transactions.previous_page_number}}">Previous</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item disabled"><a class="page-link" href="#">Page {{transactions.number}} of
+                        {{transactions.paginator.num_pages}}</a></li>
+
+                {% if transactions.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{transactions.next_page_number}}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{transactions.paginator.num_pages}}">&raquo
+                        Last</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+    </div>
+    <br> <br>
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<head>
+    <link rel="styles" href="styles.css">
+</head>
+
+<style>
+    .form_input {
+
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 16px;
+        font-family: Verdana;
+    }
+
+    .form-label {
+        font-size: 14px;
+        font-family: Verdana;
+        color: white;
+    }
+
+    .form-control {
+        font-size: 16px;
+        font-family: Verdana;
+    }
+</style>
+<div class="container">
+    <br>
+    {% if form.errors%}
+    <div class="message_alert ali align_center">
+        <p class="">There was en error with your submission, try again!</p>
+        <br />
+    </div>
+    {%endif%}
+
+    <br><br><br>
+    <div class="form_login form-label width_70">
+        <h2 class="welcome-txt">Create an account</h2>
+        <form action="{%url 'tracker:register'%}" method="POST">{%csrf_token%}
+            {{form.as_p}}
+            <button class="btn btn-color-pink" type="submit">SIGN UP</button>
+        </form>
+    </div>
+    <br><br><br><br>
+</div>
+{%endblock%}

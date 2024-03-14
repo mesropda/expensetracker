@@ -1,0 +1,39 @@
+<style>
+    .menu {
+        width: 15%;
+        /*border: 1px solid white;*/
+    }
+
+    .sidebar-ul {
+        list-style-type: none;
+        padding: 0;
+
+    }
+
+    .sidebar-ul a {
+        color: rgb(211, 206, 206);
+        text-decoration: none;
+        font-size: 18px;
+        font-family: Verdana;
+        padding: 0;
+    }
+
+    .hr {
+        color: white;
+
+    }
+</style>
+<br>
+<div class="menu">
+
+    <ul class="sidebar-ul">
+        <hr class="hr">
+        <li> <a href="{%url 'expenses:index'%}">Dashboard</a> </li>
+        <hr class="hr">
+        <li> <a href="{%url 'expenses:monthly'%}">Monthly report</a> </li>
+        <hr class="hr">
+        <li> <a href="{%url 'expenses:history'%}">History</a> </li>
+        <hr class="hr">
+
+    </ul>
+</div>

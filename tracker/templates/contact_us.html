@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<style>
+    .form_textarea {
+        resize: none;
+        font-size: 14px;
+        font-family: Verdana;
+        resize: vertical;
+        overflow: auto;
+        width: 98%;
+        min-height: 140px;
+        display: block;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+</style>
+<div class="container">
+
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert align_center color-green" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+    <div class="contact-div">
+        <br><br><br><br>
+
+        <form method="POST" class="form_login width_70">{%csrf_token%}
+            <h2 class="welcome-txt align_center">Contact Us</h2>
+            <p class="form-label align_center font_size_18">We're here for you: Connect us for any questions or concerns.</p>
+            <label class="form-label" for="">First Name</label>
+            <br>
+            <input class="form_input" type="text" placeholder="First Name" name="first_name">
+            <br>
+            <br>
+            <label class="form-label" for="">Last Name</label>
+            <br>
+            <input class="form_input" type="text" placeholder="Last Name" name="last_name">
+            <br>
+            <br>
+            <label class="form-label" for="">Email</label>
+            <br>
+            <input class="form_input" type="email" placeholder="Email" name="email">
+            <br>
+            <br>
+            <label class="form-label" for="">Message</label>
+            <br>
+            <textarea class="form_textarea" placeholder="Type your message here" resize="none" id="" name="message"></textarea>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-color-pink">Send</button>
+        </form>
+
+    </div>
+</div>
+{%endblock%}

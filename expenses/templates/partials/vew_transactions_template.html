@@ -1,0 +1,38 @@
+<form method="POST">{%csrf_token%}
+    <button type="submit" formaction="{% url 'expenses:delete-expense' %}" onclick="checker()" class="btn btn_size_10 btn-danger align_right">Del</button>
+    <button type="submit" formaction="{% url 'expenses:edit-expense' %}" class="btn btn_size_10 btn-color-pink align_right">Edit</button>
+    <table class="table table-light table-striped table-hover table-sm table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"> #ID </th>
+                <th scope="col"> Transaction type </th>
+                <th scope="col"> Amount </th>
+                <th scope="col"> Category </th>
+                <th scope="col"> Source </th>
+                <th scope="col"> Date </th>
+                <th scope="col"> Edit </th>
+            </tr>
+        </thead>
+        <tboby>
+            {% for transaction in transactions%}
+            <tr>
+                <td> {{transaction.id}} </td>
+                <td> {{transaction.transaction_type}} </td>
+                <td> {{transaction.amount}} </td>
+                <td> {{transaction.category}} </td>
+                <td> {{transaction.source}} </td>
+                <td> {{transaction.date}} </td>
+                <td> <input type="checkbox" name="selected_items" value="{{transaction.id}}"> </td>
+            </tr>
+            {% endfor %}
+        </tboby>
+    </table>
+</form>v
+<script>
+    function checker() {
+        var result = confirm('Are you sure you want to Delete?');
+        if (result == false) {
+            event.preventDefault();
+        }
+    }
+</script>

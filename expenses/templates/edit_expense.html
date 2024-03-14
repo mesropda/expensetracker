@@ -1,0 +1,95 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .btn-wallet {
+        background-color: rgb(211, 206, 206);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 22px;
+        color: black;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .btn-wallet:hover {
+        background-color: grey;
+    }
+
+    .index-div {
+        margin-left: auto;
+        margin-top: -45px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .index-div-col {
+        margin-top: -230px;
+        margin-left: auto;
+        width: 80%;
+        margin-bottom: 35px;
+
+    }
+
+    .transaction {
+        width: 80%;
+        float: right;
+        margin-top: 38px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .div-recent-expenses {
+        width: 80%;
+        margin-left: auto;
+        list-style-type: none;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <br>
+    <h2 class="welcome-txt">Welcome to Expense Edit page</h2>
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+
+
+    {% include 'sidebar.html' %}
+
+    <div class="index-div-col">
+        {% include 'partials/form_columns.html' %}
+    </div>
+
+    <div class="index-div" id="expense-form">
+        {% for transaction in transactions %}
+        {% include 'partials/form_edit_expense.html' %}
+        {% endfor %}
+    </div>
+
+    <div class="my-4">
+        <br>
+        <button type="button" class="btn btn_size_80 align_right btn-color-green" id="update">Update</button>
+    </div>
+
+    <br>
+    <div class="div-recent-expenses">
+        <ul class="form-label " id="transaction-list">
+            {% for transaction in transactions %}
+            {% include 'partials/transaction.html' %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{%endblock%}

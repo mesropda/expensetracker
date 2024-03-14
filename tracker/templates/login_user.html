@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .register_link {
+        margin: auto;
+        font-size: 15px;
+        font-family: Verdana;
+    }
+
+    .register-label a {
+        color: #55F8B4;
+        text-decoration: none;
+    }
+
+    .register-label a:hover {
+        cursor: pointer;
+        color: rgb(8, 178, 70);
+
+    }
+</style>
+<div class="container">
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+    <br><br><br><br>
+    <form method="POST" class="form_login">{%csrf_token%}
+        <br>
+        <h2 class="welcome-txt align_center">Log in</h2>
+        <div>
+            <label class="form-label" for="">Username</label>
+            <br>
+            <input class="form_input width_100" placeholder="UserName" type="text" name="username">
+            <br>
+            <br>
+            <label class="form-label" for="">Password</label>
+            <input class="form_input width_100" placeholder="Password" type="password" name="password">
+            <br> <br>
+            <div class="align_center">
+                <button class="btn btn-color-pink align_center" type="submit">LOG IN</button>
+            </div>
+        </div>
+
+        <div class="register_link">
+            <br>
+            <label class="register-label align_center" for=""><a href="{%url 'tracker:register'%}">Not a member? Register here!</a></label>
+            <label class="register-label align_center" for=""><a href="{%url 'tracker:reset_password'%}">Forgot password?</a></label>
+        </div>
+    </form>
+</div>
+{%endblock%}

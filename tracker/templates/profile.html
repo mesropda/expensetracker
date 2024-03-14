@@ -1,0 +1,95 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+<style>
+    .profile {
+        width: 30vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile_text_form {
+
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 15px;
+        height: 17px;
+        resize: none;
+        border: 1px solid white;
+        font-size: 17px;
+        font-family: Verdana;
+        width: 98%;
+    }
+</style>
+<div class="container">
+    <h1 class="welcome-txt align_center">Welcome to Profile Page!</h1>
+
+    {%if messages%}
+    {% for message in messages %}
+    <div class="message_alert align_center" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+
+    {%endif%}
+
+
+
+    <dif class="user-profile">
+        <form class="profile" method=POST>{% csrf_token %}
+            <label class="form-label" for="">UserName</label>
+            <br>
+            <input class="form_input width_100" type="text" name="username" value={{user.username}}>
+            <br>
+            <br>
+            <label class="form-label" for="">First Name</label>
+            <br>
+            <input class="form_input width_100" type="text" name="first_name" value={{user.first_name}}>
+            <br>
+            <br>
+            <label class="form-label" for="">Last Name</label>
+            <br>
+            <input class="form_input width_100" type="text" name="last_name" value={{user.last_name}}>
+            <br>
+            <br>
+            <label class="form-label" for="">Ocupation</label>
+            <br>
+            <select class="form_input width_100" name="profession">
+                <option disabled selected>{{userProfile.profession}}</option>
+                <option value="Employee">Employee</option>
+                <option value="Business">Business</option>
+                <option value="Student">Student</option>
+                <option value="Other">Other</option>
+            </select>
+            <br>
+            <br>
+            <label class="form-label" for="">Monthly income</label>
+            <br>
+            <input class="form_input width_100" type="number" name="income" value={{userProfile.income}}>
+            <br>
+            <br>
+            <label class="form-label" for="">Savings amount</label>
+            <br>
+            <input class="form_input width_100" type="number" name="savings" value={{userProfile.savings}}>
+            <br>
+            <br>
+            <label class="form-label" for="">Email</label>
+            <br>
+            <input class="form_input width_100" type="email" name="email" value={{user.email}}>
+            <br>
+            <br>
+            <label class="form-label" for="">Upload a profile picture</label>
+            <br>
+            <input class="form-label" type="file" name="profile_pic" value={{user.pic}}>
+            <br>
+            <br>
+            <button class="btn btn_size_100 btn-color-green" type="submit">Update</button>
+        </form>
+    </dif>
+</div>
+{%endblock%}

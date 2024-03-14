@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .container-home {
+        width: 100vw;
+        min-height: calc(50vh);
+        margin-left: auto;
+        margin-right: auto;
+        font-family: Verdana;
+        background: url(../static/background.jpg) no-repeat;
+        background-size: 2045px 50vh;
+    }
+
+    .welcome {
+        font-size: 60px;
+        font-weight: bolder;
+    }
+
+    @media screen and (max-width: 1400px) {
+        .welcome {
+            font-size: 40px;
+        }
+    }
+</style>
+<div class="container-home">
+    <div class="welcome color-green border">
+        <p class="align_center">Welcome to Expense Tracker</p>
+        <p class="align_center">It Is All About Tracking</p>
+    </div>
+
+</div>
+<br>
+<div class="container">
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+
+    <br>
+    <div class="container inline">
+        <div class="form-label width_20">
+            <p class="align_center  font_size_25">Simple money tracker</p>
+            <hr>
+            <p>It takes seconds to record daily transactions. Put them into clear categories such as Expense: Food, Shopping or Income: Salary.
+            </p>
+        </div>
+        <div class="form-label width_20">
+            <p class="align_center font_size_25">Painless budgeting</p>
+            <hr>
+
+            <p>It takes seconds to record daily transactions. Put them into clear and visualized categories such as Expense: Food, Shopping or Income: Salary,
+                Gift.
+            </p>
+        </div>
+        <div class="form-label width_20">
+            <p class="align_center font_size_25">The whole picture in one pie</p>
+            <hr>
+            <p>One report to give a clear view on your spending patterns. Understand where your money comes and goes with easy-to-read montly pie charts.</p>
+        </div>
+        <div class="form-label width_20">
+            <p class="align_center font_size_25">Secure</p>
+            <hr>
+            <p>Your data is always safe wherever your are and what ever device you are using.</p>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{%endblock%}
