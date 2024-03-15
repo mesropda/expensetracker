@@ -35,11 +35,6 @@ body {
     padding-top: 10px;
 }
 
-@media screen and (max-width: 1174px) {
-    .header {
-        height: 100px;
-    }
-}
 
 .footer {
     height: 50px;
@@ -242,7 +237,7 @@ body {
 }
 
 @media screen and (max-width: 1400px) {
-    .font_size_to_13 {
+    .font_size_13 {
         font-size: 13px;
     }
 }
@@ -308,11 +303,6 @@ body {
 .inline {
     display: flex;
     justify-content: space-between;
-}
-
-.inline1 {
-    display: flex;
-    gap: 10%;
 }
 
 .align_center {
