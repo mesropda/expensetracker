@@ -153,14 +153,11 @@ def register_user(request):
             user = authenticate(username=username,
                                 password=password)
 
-            send_mail(
-                'Registration confirmation',
-                f'Thank you {
-                    user.first_name} for registergin in expense tracker',
-                settings.EMAIL_HOST_USER,
-                [user.email],
-                fail_silently=False,
-            )
+            send_mail('Registration confirmation', f'Thank you {user.first_name} for registergin in expense tracker',
+                      settings.EMAIL_HOST_USER,
+                      [user.email],
+                      fail_silently=False,
+                      )
 
             login(request, user)
             request.session['is_logged'] = True
