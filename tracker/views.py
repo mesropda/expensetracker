@@ -25,7 +25,7 @@ from .models import UserProfile
 
 
 def home_page(request):
-
+    
     return render(request, "home.html", {})
 
 
@@ -118,7 +118,7 @@ def login_user(request):
             return redirect('expenses:index')
         else:
             messages.success(
-                request, ("There was an error logging in, try again!"))
+                request, ("There was an error logging in, please try again!"))
             return redirect('tracker:log-in')
     else:
         return render(request, "login_user.html", {})
@@ -153,7 +153,7 @@ def register_user(request):
             user = authenticate(username=username,
                                 password=password)
 
-            send_mail('Registration confirmation', f'Thank you {user.first_name} for registergin in expense tracker',
+            send_mail('Registration confirmation', f'Thank you {user.first_name} for registering in expense tracker.\n\nSincerely,\nExpense Tracker Team',
                       settings.EMAIL_HOST_USER,
                       [user.email],
                       fail_silently=False,

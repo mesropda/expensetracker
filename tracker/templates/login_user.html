@@ -21,19 +21,20 @@
     }
 </style>
 <div class="container">
-    {%if messages%}
-    <br>
-    {% for message in messages %}
-    <div class="message_alert" role="alert">
-        {{message}}
-        <br>
-    </div>
-    {% endfor %}
-    {%endif%}
-    <br><br><br><br>
+
+    <br><br>
     <form method="POST" class="form_login">{%csrf_token%}
         <br>
         <h2 class="welcome-txt align_center">Log in</h2>
+        {%if messages%}
+        <br>
+        {% for message in messages %}
+        <div class="message_alert align_center" role="alert">
+            {{message}}
+            <br><br>
+        </div>
+        {% endfor %}
+        {%endif%}
         <div>
             <label class="form-label" for="">Username</label>
             <br>
