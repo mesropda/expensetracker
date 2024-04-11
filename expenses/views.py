@@ -17,6 +17,10 @@ import plotly.express as px
 
 def user_home_page(request):
     user = check_if_user_loggedin(request)
+    if user==None:
+        messages.success(request,"Your are logged out, please login again")
+        return redirect('tracker:home')
+    
     user_transactions = Transactions.objects.filter(user=user)
     todayDate = datetime.date.today()
     start_date = todayDate.replace(day=1)
@@ -40,7 +44,10 @@ def user_home_page(request):
 
 
 def monthly_report(request):
-
+    user = check_if_user_loggedin(request)
+    if user==None:
+        messages.success(request,"Your are logged out, please login again")
+        return redirect('tracker:home')
     categories = {
         "House": 0,
         "Food": 0,
@@ -53,7 +60,6 @@ def monthly_report(request):
     }
     '''Checki if the user is logged in, then filter throgh th transactions 
     according to motth which is beeing posted'''
-    user = check_if_user_loggedin(request)
     if request.method == "POST":
         form = MonthlyTransactionsForm(request.POST)
         if form.is_valid() and form.cleaned_data['month'] != '--------':
@@ -109,6 +115,9 @@ def piechart(categories, month):
 # view history page
 def history(request):
     user = check_if_user_loggedin(request)
+    if user==None:
+        messages.success(request,"Your are logged out, please login again")
+        return redirect('tracker:home')
     transactions = Transactions.objects.filter(
         user=user)
     transactions_filtered = TransactionFilter(

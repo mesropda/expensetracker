@@ -11,12 +11,21 @@
         font-family: Verdana;
         background: url(../static/background.jpg) no-repeat;
         background-size: 2045px 50vh;
+        display: flex;
+        justify-content: center;
     }
 
     .welcome {
+
         padding-top: 10%;
         font-size: 60px;
         font-weight: bolder;
+    }
+
+    .welcome p {
+        background-color: rgba(5, 0, 34, 0.5);
+        color: white;
+        width: auto;
     }
 
     @media screen and (max-width: 1400px) {
@@ -26,7 +35,7 @@
     }
 </style>
 <div class="container-home">
-    <div class="welcome color-green">
+    <div class="welcome">
         <p class="align_center">Welcome to Expense Tracker</p>
         <p class="align_center">It Is All About Tracking</p>
     </div>
@@ -37,7 +46,7 @@
     {%if messages%}
     <br>
     {% for message in messages %}
-    <div class="message_alert" role="alert">
+    <div class="message_alert align_center" role="alert">
         {{message}}
         <br>
     </div>
@@ -45,41 +54,53 @@
     {%endif%}
 
     <br>
-    <div class="container inline">
-        <div class="form-label width_20">
-            <p class="align_center  font_size_25">Intuitive & Clean</p>
+
+    <div class="container-flex inline">
+        <div class="form-label home-intro">
+            <div class="home-intro-heading">
+                <p class="align_center  font_size_25">Intuitive & Clean</p>
+            </div>
+            <hr class="hr1">
+            <div class="home-intro-body">
+                <p>It takes seconds to record daily transactions. Put them into clear categories such
+                    as Expense: Food, Shopping or Income: Salary, Business.</p>
+            </div>
         </div>
-        <div class="form-label width_20">
-            <p class="align_center font_size_25">Edit & Delete</p>
-            </p>
+
+        <div class="form-label home-intro">
+            <div class="home-intro-heading">
+                <p class="align_center font_size_25">Edit & Delete</p>
+            </div>
+            <hr class="hr1">
+            <div class="home-intro-body">
+                <p>Don't worry about any mistakes or wrong inputs. You can always modify any stransaction
+                    whenever you want.</p>
+            </div>
         </div>
-        <div class="form-label width_20">
-            <p class="align_center font_size_25">The whole picture in one pie</p>
+
+        <div class="form-label home-intro">
+            <div class="home-intro-heading">
+                <p class="align_center font_size_25">The whole picture in one pie</p>
+            </div>
+            <hr class="hr1">
+            <div class="home-intro-body">
+                <p>One report to give a clear view on your spending patterns.
+                    Understand where your money comes and goes with easy-to-read montly pie charts.</p>
+            </div>
         </div>
-        <div class="form-label width_20">
-            <p class="align_center font_size_25">Secure</p>
+
+        <div class="form-label home-intro">
+            <div class="home-intro-heading">
+                <p class="align_center font_size_25">Secure</p>
+            </div>
+            <hr class="hr1">
+            <div class="home-intro-body">
+                <p>Your data is always safe wherever your are and what ever device you are using.</p>
+            </div>
         </div>
     </div>
 
-    <div class="container inline">
-        <div class="form-label width_20">
-            <hr>
-            <p>It takes seconds to record daily transactions. Put them into clear categories such as Expense: Food, Shopping or Income: Salary, Business.
-        </div>
-        <div class="form-label width_20">
-            <hr>
-            <p>Don't worry about any mistakes or wrong inputs. You can always modify any stransaction whenever you want.
-            </p>
-        </div>
-        <div class="form-label width_20">
-            <hr>
-            <p>One report to give a clear view on your spending patterns. Understand where your money comes and goes with easy-to-read montly pie charts.</p>
-        </div>
-        <div class="form-label width_20">
-            <hr>
-            <p>Your data is always safe wherever your are and what ever device you are using.</p>
-        </div>
-    </div>
+
 </div>
 <br><br><br><br>
 {%endblock%}
